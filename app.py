@@ -1,25 +1,22 @@
 from flask import *
+from controller.photo import photo
+from controller.article import article
 
 app = Flask(__name__)
+app.register_blueprint(photo, url_prefix='/photo')
+app.register_blueprint(article, url_prefix='/article')
 
+
+# TODO：把主页面也重写成Controller 以app.register_blueprint注册到app中
 
 @app.route('/')
+def redirect_to_index():
+    return redirect('index')
+
+
 @app.route('/index')
 def index():
     return render_template('index.html')
-
-
-@app.route('/check_select_date', methods=['get', 'post'])
-def check_select_date():
-    if request.method == 'post':
-        pass
-    else:
-        return render_template('index.html')
-
-
-@app.route('/photo')
-def photo():
-    return render_template('photo.html')
 
 
 @app.errorhandler(404)

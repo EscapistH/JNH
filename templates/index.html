@@ -1,23 +1,11 @@
 {% extends "base.html" %}
 <!DOCTYPE html>
-<html lang="zh-cn">
 <head>
-    <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% block head %}
-        {{ super() }}
-    {% endblock %}
-    {% block title %}index{% endblock %}
+    {% block title %} 首页 {% endblock %}
 </head>
 <body>
     {% block content %}
-        <div class="date-select">
-            <form action="check_select_date" method="post">
-                <label>请选择日期：</label>
-                <input type="date">
-                <input type="submit">
-            </form>
-        </div>
+
     {% endblock %}
 </body>
 </html>

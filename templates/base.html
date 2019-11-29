@@ -2,49 +2,51 @@
 <html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
+    <!-- 添加响应式支持 -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    {% block head %}
-
-        <!-- 导入bootstrap4.min.css -->
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/bs4/bootstrap.min.css') }}">
-        <!-- 导入jquery 务必在导入bootstrap.js前导入 -->
-        <script src="{{ url_for('static', filename='js/jquery/jquery-3.4.1.min.js') }}"></script>
-        <!-- 导入bootstrap.bundle.js -->
-        <script src="{{ url_for('static', filename='js/bs4/bootstrap.bundle.min.js') }}"></script>
-        <!-- 导入bootstrap.js -->
-        <script src="{{ url_for('static', filename='js/bs4/bootstrap.min.js') }}"></script>
-
-        <title>{% block title %}{% endblock %} - do this to my love </title>
-
-    {% endblock %}
-
+    {#  在这里添加自定义meta 需自行添加<meta></meta>标签  #}
+    {% block head %}{% endblock %}
+    <!-- 导入bootstrap4.min.css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <!-- 导入jquery 务必在导入bootstrap.js前导入 -->
+    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+    <!-- 导入bootstrap.bundle.js -->
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <!-- 导入bootstrap.js -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <title>{% block title %}标题{% endblock %} - do this to my love </title>
+    {#  在这里添加自定义css 需自行添加<style></style>标签  #}
+    {% block style %}{% endblock %}
+    {#  在这里添加自定义js 需自行添加<script></scrpit>标签  #}
+    {% block script %}{% endblock %}
 </head>
 
 <body>
-
     <div id="header" class="container">
         <nav class="navbar navbar-expand-md bg-light navbar-light">
             <!-- 首页标识 -->
-            <a class="navbar-brand" href="/">AA</a>
+            <a class="navbar-brand" href="index">jNh</a>
             <!-- 导航栏按钮 -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-              <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             <!-- 导航栏链接 -->
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#">Link1</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Link2</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Link3</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index">主页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="article">文章</a></li>
+                    <li class="nav-item"><a class="nav-link" href="photo">图片</a></li>
                 </ul>
             </div>
         </nav>
     </div>
-    <div id="content" class="container">{% block content %}{% endblock %}</div>
-    <div id="footer" class="container">
-        <footer class="text-center fixed-bottom">&copy; Copyright 2019 by <a href="https://github.com/EscapistH">Escapist_H</a>.</footer>
+    <div id="content" class="container">
+        {% block content %}主体{% endblock %}
     </div>
-
+    <div id="footer" class="container">
+        <footer class="small text-center fixed-bottom">
+            &copy; Copyright 2019 by <a href="https://github.com/EscapistH">Escapist_H</a>.
+        </footer>
+    </div>
 </body>
 </html>
