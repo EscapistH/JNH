@@ -20,4 +20,4 @@ class Article(db.Model):
     photo_path = db.Column(db.String(64))
 
     def __repr__(self):
-        return 'photo name: {}\n at {}'.format(self.photo_title, self.photo_path)
+        return 'photo title: {}\n at {}'.format(self.photo_title, self.photo_path)
