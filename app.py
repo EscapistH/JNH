@@ -26,4 +26,5 @@ def page_not_found(e):
 
 
 if __name__ == '__main__':
+    # TODO:创建数据表，创建实体对象，添加数据到数据库
     app.run()
