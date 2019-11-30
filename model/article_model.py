@@ -1,7 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-from app import app
-
-db = SQLAlchemy(app)
+from app import db
 
 
 class Article(db.Model):
@@ -12,3 +9,6 @@ class Article(db.Model):
     article_title = db.Column(db.String(64))
     article_auth = db.Column(db.String(64))
     article_content = db.Column(db.Text)
+
+    def __repr__(self):
+        return '《{}》\n\t-- by {}\n{}'.format(self.article_title, self.article_auth, self.article_content)

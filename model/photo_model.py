@@ -1,7 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-from app import app
-
-db = SQLAlchemy(app)
+from app import db
 
 
 class Photo(db.Model):
@@ -12,3 +9,5 @@ class Photo(db.Model):
     photo_title = db.Column(db.String(64))
     photo_path = db.Column(db.String(64))
 
+    def __repr__(self):
+        return 'photo: {} at {}'.format(self.photo_title, self.photo_path)
