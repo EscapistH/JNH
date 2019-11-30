@@ -1,19 +1,22 @@
-from flask import *
-
-# 导入controller
-from controller.index import index
-from controller.article import article
-from controller.photo import photo
-
-# 导入model
-from model.article_model import Article
-from model.photo_model import Photo
+from flask import Flask, render_template
 
 # 导入配置
 from config import Config
 
+# 初始化程序并导入配置
 app = Flask(__name__)
-app.config.from_pyfile(Config)
+app.config.from_object(Config)
+
+# 导入flask_sqlalchemy模块 并初始化db对象
+from flask_sqlalchemy import SQLAlchemy
+db = SQLAlchemy(app)
+
+# 导入controller并注册url
+from controller.index import index
+from controller.article import article
+from controller.photo import photo
+
+# 注册蓝图url
 app.register_blueprint(index, url_prefix='/')
 app.register_blueprint(index, url_prefix='/index')
 app.register_blueprint(photo, url_prefix='/photo')
@@ -26,5 +29,5 @@ def page_not_found(e):
 
 
 if __name__ == '__main__':
-    # TODO:创建数据表，创建实体对象，添加数据到数据库
+    # 程序启动入口
     app.run()
