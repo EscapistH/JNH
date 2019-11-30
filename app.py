@@ -15,17 +15,14 @@ db = SQLAlchemy(app)
 from controller.index import index
 from controller.article import article
 from controller.photo import photo
+from controller.error import error
 
 # 注册蓝图url
+app.register_blueprint(error)
 app.register_blueprint(index, url_prefix='/')
 app.register_blueprint(index, url_prefix='/index')
 app.register_blueprint(photo, url_prefix='/photo')
 app.register_blueprint(article, url_prefix='/article')
-
-
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
 
 
 if __name__ == '__main__':
