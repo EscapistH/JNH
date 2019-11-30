@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask
 
 # 导入配置
 from config import Config
@@ -11,13 +11,10 @@ app.config.from_object(Config)
 from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy(app)
 
-# 导入controller并注册url
-from controller.index import index
-from controller.article import article
-from controller.photo import photo
-from controller.error import error
+# 导入views并注册url
+from jnh.views import *
 
-# 注册蓝图url
+# 注册视图 url
 app.register_blueprint(error)
 app.register_blueprint(index, url_prefix='/')
 app.register_blueprint(index, url_prefix='/index')
