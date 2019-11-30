@@ -10,6 +10,4 @@ def handle_404(e):
 
 @error.app_errorhandler(500)
 def handle_500(e):
-    # TODO: 编写一个500.html来响应这个错误页面
-    # return render_template('500.html'), 500
-    return render_template('404.html'), 500
+    return render_template('500.html'), 500
