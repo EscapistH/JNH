@@ -5,7 +5,22 @@
 </head>
 <body>
     {% block content %}
-        <h1>some articles</h1>
+        <h1 class="text-center">
+        <table class="table">
+            <tr>
+                <th>article_title</th>
+                <th>article_auth</th>
+                <th>article_content</th>
+            </tr>
+            <tr>
+            {% for article in articles %}
+                <td>{{ article.article_title }}</td>
+                <td>{{ article.article_auth }}</td>
+                <td>{{ article.article_content }}</td>
+            {% endfor %}
+            </tr>
+        </table>
+        </h1>
     {% endblock %}
 </body>
 </html>
