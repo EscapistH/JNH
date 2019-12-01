@@ -23,9 +23,9 @@
 
 <body>
     <div id="header" class="container">
-        <nav class="navbar navbar-expand-md bg-light navbar-light">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
             <!-- 首页标识 -->
-            <a class="navbar-brand" href="index">jNh</a>
+            <a class="navbar-brand" href="{{ url_for('index.show_index') }}">jNh</a>
             <!-- 导航栏按钮 -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -33,18 +33,18 @@
             <!-- 导航栏链接 -->
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index">主页</a></li>
-                    <li class="nav-item"><a class="nav-link" href="article">文章</a></li>
-                    <li class="nav-item"><a class="nav-link" href="photo">图片</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('index.show_index') }}">主页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('articles.show_all') }}">文章</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('photos.show_all') }}">图片</a></li>
                 </ul>
             </div>
         </nav>
     </div>
-    <div id="content" class="container">
+    <div id="content" class="container" style="margin-bottom: 10px; margin-top: 80px">
         {% block content %}主体{% endblock %}
     </div>
     <div id="footer" class="container">
-        <footer class="small text-center fixed-bottom">
+        <footer class="small text-center bg-dark text-light fixed-bottom">
             &copy; Copyright 2019 by <a href="https://github.com/EscapistH">Escapist_H</a>.
         </footer>
     </div>
