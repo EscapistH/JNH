@@ -36,7 +36,7 @@ def show_all():
 
 @article.route('/<int:article_id>')
 def show_by_id(article_id):
-    article_ = Article.query.filter_by(article_id=article_id).first_or_404()
+    article_ = Article.query.get_or_404(article_id)
     return render_template('articles/content.html', article=article_)
 
 
@@ -46,18 +46,17 @@ def show_by_title(article_title):
     return render_template('articles/content.html', article=article_)
 
 
-@article.route('/add', methods=('post', 'get'))
+@article.route('/add', methods=('POST', 'GET'))
 def add_one():
     from app import db
-    if request.method == 'post':
-        article_title = request.form['article_title']
-        article_auth = request.form['article_auth']
-        article_content = request.form['article_content']
-        article_ = Article(article_title, article_auth, article_content)
-        print(article_)
+    if request.method == 'POST':
+        article_ = Article(request.form['article_title'],
+                           request.form['article_auth'],
+                           request.form['article_content']
+                           )
         db.session.add(article_)
         db.session.commit()
-        return render_template(url_for('articles.show_all'))
+        return render_template(url_for('articles.show_by_id', article_id=request.form['article_id']))
     else:
         return render_template('articles/add.html')
 
@@ -69,4 +68,3 @@ photo = Blueprint('photos', __name__)
 @photo.route('')
 def show_all():
     return render_template('photos/photos.html')
-
