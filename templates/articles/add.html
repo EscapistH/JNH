@@ -5,8 +5,8 @@
 </head>
 <body>
 {% block content %}
-    <form action="{{ url_for('articles.add_one') }}" method="post">
-        <div class="form-group" style="padding-top: 10px;">
+    <form action="{{ url_for('articles.add_one') }}" method="POST">
+        <div class="form-group pt-2">
             <label for="article_title">标题：</label>
             <input name="article_title" id="article_title" class="form-control" type="text">
         </div>
