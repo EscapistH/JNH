@@ -4,10 +4,15 @@
     {% block title %} {{ article.article_title }} {% endblock %}
 </head>
 <body>
-    {% block content %}
-        <h1>{{ article.article_title }}</h1>
-        <h3>{{ article.article_auth }}</h3>
-        <p>{{ article.article_content }}</p>
-    {% endblock %}
+{% block content %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item active"><a class="text-decoration-none" href="{{ url_for('index.show_index') }}">主页</a></li>
+        <li class="breadcrumb-item active"><a class="text-decoration-none" href="{{ url_for('articles.show_all') }}">文章列表</a></li>
+        <li class="breadcrumb-item">文章内容</li>
+    </ol>
+    <h1>{{ article.article_title }}</h1>
+    <h3>{{ article.article_auth }}</h3>
+    <p>{{ article.article_content }}</p>
+{% endblock %}
 </body>
 </html>
