@@ -18,8 +18,8 @@ from jnh.views import *
 app.register_blueprint(error)
 app.register_blueprint(index, url_prefix='/')
 app.register_blueprint(index, url_prefix='/index')
-app.register_blueprint(photo, url_prefix='/photo')
-app.register_blueprint(article, url_prefix='/article')
+app.register_blueprint(photo, url_prefix='/photos')
+app.register_blueprint(article, url_prefix='/articles')
 
 
 if __name__ == '__main__':
