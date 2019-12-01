@@ -8,11 +8,11 @@
     <form action="{{ url_for('articles.add_one') }}" method="POST">
         <div class="form-group pt-2">
             <label for="article_title">标题：</label>
-            <input name="article_title" id="article_title" class="form-control" type="text">
+            <input name="article_title" id="article_title" class="form-control" type="text" required autocomplete="off">
         </div>
         <div class="form-group">
             <label for="article_auth">作者：</label>
-            <input name="article_auth" id="article_auth" class="form-control" type="text">
+            <input name="article_auth" id="article_auth" class="form-control" type="text" autocomplete="off">
         </div>
         <div class="form-group">
             <label for="article_content">内容：</label>
