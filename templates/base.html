@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <div id="header" class="container">
+    <div id="header" class="container pb-4 mb-5">
         <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
             <!-- 首页标识 -->
             <a class="navbar-brand" href="{{ url_for('index.show_index') }}">jNh</a>
@@ -40,10 +40,10 @@
             </div>
         </nav>
     </div>
-    <div id="content" class="container" style="margin-bottom: 10px; margin-top: 80px">
+    <div id="content" class="container">
         {% block content %}主体{% endblock %}
     </div>
-    <div id="footer" class="container">
+    <div id="footer" class="container pt-3 mt-3">
         <footer class="small text-center bg-dark text-light fixed-bottom">
             &copy; Copyright 2019 by <a href="https://github.com/EscapistH">Escapist_H</a>.
         </footer>
