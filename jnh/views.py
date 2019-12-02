@@ -17,7 +17,7 @@ def handle_500(e):
     return render_template('error/500.html'), 500
 
 
-# index视图部分
+# index 视图部分
 index = Blueprint('index', __name__)
 
 
@@ -65,34 +65,38 @@ def add_one():
         db.session.add(article_)
         db.session.commit()
         return redirect(url_for('articles.show_all'))
-        # return redirect(url_for('articles.show_by_title', article_title=request.form['article_title']))
     else:
         return render_template('articles/add.html')
 
 
 @article.route('/<int:article_id>/delete', methods=('POST',))
 def delete_one(article_id):
-    # from app import db
-    # if request.method == 'POST':
-    #     article_ = Article.query.get(article_id)
-    #     db.session.delete(article_)
-    #     db.session.commit()
-    #     return redirect(url_for('articles.show_all'))
-    # return render_template('articles/articles.html')
-    pass
+    from app import db
+    article_ = Article.query.get_or_404(article_id)
+    if request.method == 'POST':
+        db.session.delete(article_)
+        db.session.commit()
+        return redirect(url_for('articles.show_all'))
+    return render_template('articles/articles.html')
+    # pass
 
 
 @article.route('/<int:article_id>/update', methods=('POST', 'GET'))
 def update_one(article_id):
     from app import db
-    article_id = request.args.get('article_id')
     if request.method == 'POST':
-        article_ = Article.query.get(article_id)
+        article_ = Article.query.get_or_404(article_id)
         article_.article_title = request.form['article_title']
         article_.article_auth = request.form['article_auth']
         article_.article_content = request.form['article_content']
         db.session.commit()
-    return redirect(url_for('articles.show_all'))
+        print('post')
+        return redirect(url_for('articles.show_all'))
+        # return render_template('articles/update.html')
+    else:
+        article_ = Article.query.get_or_404(article_id)
+        # return render_template('articles/update.html', article_id=article_.article_id)
+        return render_template('articles/update.html', article=article_)
 
 
 # photos 视图部分
