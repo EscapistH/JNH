@@ -21,8 +21,8 @@
         <p>{{ article.article_content }}</p>
     </div>
     <div class="btn-group d-flex">
-        <a href="{{ url_for('articles.update_one') }}" class="btn btn-secondary text-decoration-none">编辑</a>
-        <a href="{{ url_for('articles.delete_one') }}" class="btn btn-danger text-decoration-none">删除</a>
+        <a href="{{ url_for('articles.update_one', article_id = article.article_id) }}" class="btn btn-secondary text-decoration-none">编辑</a>
+        <a href="{{ url_for('articles.delete_one', article_id = article.article_id) }}" class="btn btn-danger text-decoration-none">删除</a>
     </div>
 {% endblock %}
 </body>
