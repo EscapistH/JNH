@@ -52,8 +52,10 @@
                 some text some text some text some text some text some text some text some text some text some text<br>
                 some text some text some text some text some text some text some text some text some text some text<br>
             </p><br>
-            <a href="{{ url_for('articles.show_all') }}" class="btn btn-dark btn-block">to articles</a>
-            <a href="{{ url_for('photos.show_all') }}" class="btn btn-dark btn-block">to photos</a>
+            <div class="btn-group d-flex">
+                <a href="{{ url_for('articles.show_all') }}" class="btn btn-dark btn-lg">to articles</a>
+                <a href="{{ url_for('photos.show_all') }}" class="btn btn-dark btn-lg">to photos</a>
+            </div>
         </div>
     {% endblock %}
 </body>

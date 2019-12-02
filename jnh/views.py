@@ -10,6 +10,7 @@ error = Blueprint('error', __name__)
 def handle_404(e):
     return render_template('error/404.html'), 404
 
+
 # 捕获全局500错误，提示用户等待服务器恢复运行后访问
 @error.app_errorhandler(500)
 def handle_500(e):
@@ -64,8 +65,34 @@ def add_one():
         db.session.add(article_)
         db.session.commit()
         return redirect(url_for('articles.show_all'))
+        # return redirect(url_for('articles.show_by_title', article_title=request.form['article_title']))
     else:
         return render_template('articles/add.html')
+
+
+@article.route('/<int:article_id>/delete', methods=('POST',))
+def delete_one(article_id):
+    # from app import db
+    # if request.method == 'POST':
+    #     article_ = Article.query.get(article_id)
+    #     db.session.delete(article_)
+    #     db.session.commit()
+    #     return redirect(url_for('articles.show_all'))
+    # return render_template('articles/articles.html')
+    pass
+
+
+@article.route('/<int:article_id>/update', methods=('POST', 'GET'))
+def update_one(article_id):
+    from app import db
+    article_id = request.args.get('article_id')
+    if request.method == 'POST':
+        article_ = Article.query.get(article_id)
+        article_.article_title = request.form['article_title']
+        article_.article_auth = request.form['article_auth']
+        article_.article_content = request.form['article_content']
+        db.session.commit()
+    return redirect(url_for('articles.show_all'))
 
 
 # photos 视图部分
