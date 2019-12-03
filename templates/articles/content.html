@@ -15,15 +15,12 @@
     </div>
     <!-- 正文显示部分 -->
     <div>
-        <p class="invisible" name="article_id">{{ article.article_id }}</p>
+        <p class="invisible">{{ article.article_id }}</p>
         <h1 class="display-4 text-center">{{ article.article_title }}</h1><br>
         <h4 class="text-right">-- by {{ article.article_auth }}</h4><br>
         <p>{{ article.article_content }}</p>
     </div>
-    <div class="btn-group d-flex">
-        <a href="{{ url_for('articles.update_one', article_id = article.article_id) }}" class="btn btn-secondary text-decoration-none">编辑</a>
-        <a href="{{ url_for('articles.delete_one', article_id = article.article_id) }}" class="btn btn-danger text-decoration-none">删除</a>
-    </div>
+    <a href="{{ url_for('articles.update_one', article_id = article.article_id) }}" class="btn btn-secondary text-decoration-none">编辑</a>
 {% endblock %}
 </body>
 </html>
