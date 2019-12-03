@@ -73,12 +73,9 @@ def add_one():
 def delete_one(article_id):
     from app import db
     article_ = Article.query.get_or_404(article_id)
-    if request.method == 'POST':
-        db.session.delete(article_)
-        db.session.commit()
-        return redirect(url_for('articles.show_all'))
-    return render_template('articles/articles.html')
-    # pass
+    db.session.delete(article_)
+    db.session.commit()
+    return redirect(url_for('articles.show_all'))
 
 
 @article.route('/<int:article_id>/update', methods=('POST', 'GET'))
