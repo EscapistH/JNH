@@ -18,7 +18,14 @@
             <label for="article_content">内容：</label>
             <textarea name="article_content" id="article_content" class="form-control" rows="7">{{ article.article_content }}</textarea>
         </div>
-        <button type="submit" class="btn btn-block btn-success">提交</button>
+        <div class="col btn-group justify-content-center">
+            <button type="submit" class="btn btn-success">提交</button>
+        </div>
+    </form><br>
+    <form method="post" action="{{ url_for('articles.delete_one', article_id=article.article_id) }}">
+        <div class="col btn-group justify-content-center">
+            <button type="submit" class="btn btn-danger">删除</button>
+        </div>
     </form>
 {% endblock %}
 </body>
