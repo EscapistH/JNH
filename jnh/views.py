@@ -90,12 +90,9 @@ def update_one(article_id):
         article_.article_auth = request.form['article_auth']
         article_.article_content = request.form['article_content']
         db.session.commit()
-        print('post')
-        return redirect(url_for('articles.show_all'))
-        # return render_template('articles/update.html')
+        return redirect(url_for('articles.show_by_id', article_id=article_.article_id))
     else:
-        article_ = Article.query.get_or_404(article_id)
-        # return render_template('articles/update.html', article_id=article_.article_id)
+        article_ = Article.query.get(article_id)
         return render_template('articles/update.html', article=article_)
 
 
